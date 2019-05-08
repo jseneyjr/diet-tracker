@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\food",
+    "\\src\\app\\food\\list",
+    "\\src\\app\\services",
+    "\\src\\app\\shared",
+    "\\src\\app\\shared\\models",
+    "\\src\\assets",
+    "\\src\\assets\\test"
+  ],
+  "SelectedNode": "\\src\\app\\food\\food.module.ts",
+  "PreviewInSolutionExplorer": false
+}
