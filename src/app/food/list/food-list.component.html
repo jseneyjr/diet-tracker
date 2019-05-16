@@ -1,6 +1,12 @@
 <ag-grid-angular style="width: 100%;"
                  class="ag-theme-balham"
                  domLayout='autoHeight'
-                 [rowData]="food"
-                 [columnDefs]="columnDefs">
+                 [rowData]="foodlist"
+                 [columnDefs]="columnDefs"
+                 [animateRows]="true"
+                 [rowSelection]="rowSelection"
+                 suppressRowClickSelection
+                 suppressHorizontalScroll
+                 (cellValueChanged)="onCellValueChanged($event)">>
 </ag-grid-angular>
+<button (click)="onAddRow()">Add Row</button>

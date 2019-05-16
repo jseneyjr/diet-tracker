@@ -5,11 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AgGridModule, AgGridColumn } from 'ag-grid-angular';
+import { AgGridModule } from 'ag-grid-angular';
 
 import { FoodService } from './services/food.service';
 import {FoodModule} from './food/food.module';
-import {FoodResolve} from './food/resolvers/food.resolve';
+import {FoodResolver} from './food/resolvers/food.resolve';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import {FoodResolve} from './food/resolvers/food.resolve';
   ],
   providers: [
     FoodService,
-    FoodResolve
+    FoodResolver
   ],
   bootstrap: [AppComponent]
 })

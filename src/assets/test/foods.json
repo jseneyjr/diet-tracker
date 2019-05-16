@@ -1,12 +1,22 @@
 [
   {
-    "Name": "Chicken",
-    "Unit": "oz",
-    "Amount": 4,
-    "Calories": 100,
-    "Fat": 0,
-    "Protein": 20,
-    "Carbs": 2,
-    "Fiber": 0
+    "name": "Chicken",
+    "unit": "oz",
+    "amount": 4,
+    "calories": 100,
+    "fat": 0,
+    "protein": 20,
+    "carbs": 2,
+    "fiber": 0
+  },
+  {
+    "name": "Bread",
+    "unit": "g",
+    "amount": 3,
+    "calories": 200,
+    "fat": 1,
+    "protein": 2,
+    "carbs": 3,
+    "fiber": 4
   }
 ]

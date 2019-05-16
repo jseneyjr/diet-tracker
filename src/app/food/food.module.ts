@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from '../app-routing.module';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
