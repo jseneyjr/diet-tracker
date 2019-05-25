@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { FoodService } from './services/food.service';
 import {FoodModule} from './food/food.module';
 import {FoodResolver} from './food/resolvers/food.resolve';
-import {MatTableModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,9 +17,9 @@ import {MatTableModule} from '@angular/material';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatTableModule,
     HttpClientModule,
-    FoodModule
+    FoodModule,
+    BrowserAnimationsModule
   ],
   providers: [
     FoodService,

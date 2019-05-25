@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {ActivatedRoute} from '@angular/router';
 import {Food} from '../../shared/models/food';
+import {FoodAddComponent} from '../add/food-add.component';
 
 
 @Component({
@@ -12,7 +14,10 @@ export class FoodListComponent implements OnInit {
   foodlist: Food[];
   columnDefs: string[];
 
-  constructor(private route: ActivatedRoute) {}
+  dialogRef: MatDialogRef<FoodAddComponent>;
+
+  constructor(private route: ActivatedRoute,
+              public dialog: MatDialog) {}
 
   ngOnInit() {
     const data = this.route.snapshot.data;
@@ -37,5 +42,21 @@ export class FoodListComponent implements OnInit {
   }
   getTotalNetCarb() {
     return this.foodlist.reduce((acc, food) => acc + food.netCarb, 0);
+  }
+
+  openDialog() {
+    this.dialogRef = this.dialog.open(FoodAddComponent, {
+      width: '250px'
+    });
+
+    // const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    //   width: '250px',
+    //   data: {name: this.name, animal: this.animal}
+    // });
+    //
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   this.animal = result;
+    // });
   }
 }

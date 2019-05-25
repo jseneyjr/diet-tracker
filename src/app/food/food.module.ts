@@ -2,19 +2,34 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FoodListComponent } from './list/food-list.component';
+import { FoodAddComponent } from './add/food-add.component';
 import {CommonModule} from '@angular/common';
-import {MatTableModule} from '@angular/material';
+import {MatTableModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        MatInputModule} from '@angular/material';
 
 @NgModule({
   declarations: [
-    FoodListComponent
+    FoodListComponent,
+    FoodAddComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule
   ],
-  providers: []
+  providers: [],
+  entryComponents: [
+    FoodAddComponent
+  ]
 })
 export class FoodModule { }

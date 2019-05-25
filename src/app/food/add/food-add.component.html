@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>Add New Food!</h1>
+<div mat-dialog-content>
+
+  <mat-form-field>
+    <input matInput placeholder="Name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Unit">
+      <mat-option *ngFor="let unit of getUnits()" [value]="unit">
+        {{unit}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Amount">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Calories">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Fat">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Protein">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Carbohydrates">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Fiber">
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onAddClick()">Add</button>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+</div>
