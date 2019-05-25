@@ -1,6 +1,6 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { Unit } from '../../shared/enums/unit.enum';
+import { Units } from '../../shared/enums/units';
 
 @Component({
   selector: 'app-food-add',
@@ -15,7 +15,7 @@ export class FoodAddComponent implements OnInit {
   }
 
   getUnits() {
-    const units = Unit;
+    const units = Units;
     var keys = Object.keys(units).filter(
       (type) => isNaN(type as any) && type !== 'values'
     );
