@@ -34,8 +34,8 @@ export class FoodAddComponent implements OnInit {
   }
 
   onSubmit() {
-    const food = new Food(this.name.value, this.amount.value, this.unit.value, this.calories.value,
-      this.fat.value, this.protein.value, this.carbs.value, this.fiber.value);
+    const food = new Food(this.name.value, +this.amount.value, this.unit.value, +this.calories.value,
+      +this.fat.value, +this.protein.value, +this.carbs.value, +this.fiber.value);
     this.dialogRef.close(food);
   }
 

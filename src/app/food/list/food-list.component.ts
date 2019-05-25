@@ -25,7 +25,7 @@ export class FoodListComponent implements OnInit {
     const data = this.route.snapshot.data;
     const list: Food[] = data.foodlist;
     this.foodlist = list.map(food =>
-      new Food(food.name, food.unit, food.amount, food.calories, food.fat, food.protein, food.carbs, food.fiber));
+      new Food(food.name, food.amount, food.unit, food.calories, food.fat, food.protein, food.carbs, food.fiber));
     this.columnDefs = ['name', 'amount', 'unit', 'calories', 'fat', 'protein', 'carbs', 'fiber', 'netCarb'];
   }
 
@@ -58,7 +58,9 @@ export class FoodListComponent implements OnInit {
   }
 
   saveFood(food: Food) {
-    console.log(food);
+    // Save to DB, if successful push to table
+    this.foodlist.push(food);
+    this.foodTable.renderRows();
   }
 
   dropTable(event: CdkDragDrop<Food[]>) {
