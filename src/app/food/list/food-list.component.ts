@@ -21,8 +21,9 @@ export class FoodListComponent implements OnInit {
 
   ngOnInit() {
     const data = this.route.snapshot.data;
-    this.foodlist = data.foodlist;
-    this.columnDefs = ['name', 'unit', 'amount', 'calories', 'fat', 'protein', 'carbs', 'fiber', 'netCarb'];
+    const list: Food[] = data.foodlist;
+    this.foodlist = list.map(food => new Food(food));
+    this.columnDefs = ['name', 'amount', 'unit', 'calories', 'fat', 'protein', 'carbs', 'fiber', 'netCarb'];
   }
 
   getTotalCalories() {
@@ -39,9 +40,6 @@ export class FoodListComponent implements OnInit {
   }
   getTotalFiber() {
     return this.foodlist.reduce((acc, food) => acc + food.fiber, 0);
-  }
-  getTotalNetCarb() {
-    return this.foodlist.reduce((acc, food) => acc + food.netCarb, 0);
   }
 
   openDialog() {
