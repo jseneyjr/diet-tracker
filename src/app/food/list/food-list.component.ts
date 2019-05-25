@@ -22,7 +22,8 @@ export class FoodListComponent implements OnInit {
   ngOnInit() {
     const data = this.route.snapshot.data;
     const list: Food[] = data.foodlist;
-    this.foodlist = list.map(food => new Food(food));
+    this.foodlist = list.map(food =>
+      new Food(food.name, food.unit, food.amount, food.calories, food.fat, food.protein, food.carbs, food.fiber));
     this.columnDefs = ['name', 'amount', 'unit', 'calories', 'fat', 'protein', 'carbs', 'fiber', 'netCarb'];
   }
 
@@ -44,17 +45,12 @@ export class FoodListComponent implements OnInit {
 
   openDialog() {
     this.dialogRef = this.dialog.open(FoodAddComponent, {
-      width: '250px'
+      width: '500px'
     });
 
-    // const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-    //   width: '250px',
-    //   data: {name: this.name, animal: this.animal}
-    // });
-    //
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   this.animal = result;
-    // });
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+    });
   }
 }

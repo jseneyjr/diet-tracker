@@ -1,6 +1,7 @@
-import {Component, OnInit, Inject} from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import {Component, OnInit} from '@angular/core';
 import { Units } from '../../shared/enums/units';
+import {MatDialogRef} from '@angular/material';
+import {Food} from '../../shared/models/food';
 
 @Component({
   selector: 'app-food-add',
@@ -8,7 +9,7 @@ import { Units } from '../../shared/enums/units';
   styleUrls: ['food-add.component.css'],
 })
 export class FoodAddComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) private data) {}
+  constructor(private dialogRef: MatDialogRef<FoodAddComponent>) {}
 
   ngOnInit() {
 
@@ -16,17 +17,18 @@ export class FoodAddComponent implements OnInit {
 
   getUnits() {
     const units = Units;
-    var keys = Object.keys(units).filter(
+    const keys = Object.keys(units).filter(
       (type) => isNaN(type as any) && type !== 'values'
     );
     return keys;
   }
 
-  onAddClick(): void {
-    // Add?
+  onAddClick(name, unit, amount, calories, fat, protein, carbs, fiber) {
+    const food = new Food(name, amount, unit, calories, fat, protein, carbs, fiber);
+    this.dialogRef.close(food);
   }
 
-  onCancelClick(): void {
-    // Cancel?
+  onCancelClick() {
+    this.dialogRef.close(null);
   }
 }

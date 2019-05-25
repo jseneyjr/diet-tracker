@@ -2,11 +2,15 @@
 <div mat-dialog-content>
 
   <mat-form-field>
-    <input matInput placeholder="Name">
+    <input matInput #name placeholder="Name">
   </mat-form-field>
 
   <mat-form-field>
-    <mat-select placeholder="Unit">
+    <input matInput #amount placeholder="Amount">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select #unit placeholder="Unit">
       <mat-option *ngFor="let unit of getUnits()" [value]="unit">
         {{unit}}
       </mat-option>
@@ -14,31 +18,29 @@
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Amount">
+    <input matInput #calories placeholder="Calories">
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Calories">
+    <input matInput #fat placeholder="Fat">
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Fat">
+    <input matInput #protein placeholder="Protein">
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Protein">
+    <input matInput #carbs placeholder="Carbohydrates">
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput placeholder="Carbohydrates">
-  </mat-form-field>
-
-  <mat-form-field>
-    <input matInput placeholder="Fiber">
+    <input matInput #fiber placeholder="Fiber">
   </mat-form-field>
 
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onAddClick()">Add</button>
+  <button mat-button
+    (click)="onAddClick(name.value, amount.value, unit.value, calories.value, fat.value,
+                        protein.value, carbs.value, fiber.value)">Add</button>
   <button mat-button (click)="onCancelClick()">Cancel</button>
 </div>

@@ -14,14 +14,15 @@ export class Food {
     return this.carbs - this.fiber;
   }
 
-  constructor(food: Food) {
-    this.name = food.name;
-    this.amount = food.amount;
-    this.unit = food.unit;
-    this.calories = food.calories;
-    this.fat = food.fat;
-    this.protein = food.protein;
-    this.carbs = food.carbs;
-    this.fiber = food.fiber;
+  constructor(name: string, unit, amount, calories, fat, protein, carbs, fiber) {
+
+    this.name = name;
+    this.amount = amount;
+    this.unit = unit;
+    this.calories = calories;
+    this.fat = fat;
+    this.protein = protein;
+    this.carbs = carbs;
+    this.fiber = fiber;
   }
 }
