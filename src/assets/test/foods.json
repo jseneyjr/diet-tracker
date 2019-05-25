@@ -7,7 +7,8 @@
     "fat": 0,
     "protein": 20,
     "carbs": 2,
-    "fiber": 0
+    "fiber": 0,
+    "netCarb": 2
   },
   {
     "name": "Bread",
@@ -16,7 +17,8 @@
     "calories": 200,
     "fat": 1,
     "protein": 2,
-    "carbs": 3,
-    "fiber": 4
+    "carbs": 5,
+    "fiber": 1,
+    "netCarb": 4
   }
 ]

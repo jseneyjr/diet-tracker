@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Food} from '../../shared/models/food';
-import {Unit} from '../../shared/enums/unit.enum';
 
 
 @Component({
@@ -19,5 +18,24 @@ export class FoodListComponent implements OnInit {
     const data = this.route.snapshot.data;
     this.foodlist = data.foodlist;
     this.columnDefs = ['name', 'unit', 'amount', 'calories', 'fat', 'protein', 'carbs', 'fiber', 'netCarb'];
+  }
+
+  getTotalCalories() {
+    return this.foodlist.reduce((acc, food) => acc + food.calories, 0);
+  }
+  getTotalFat() {
+    return this.foodlist.reduce((acc, food) => acc + food.fat, 0);
+  }
+  getTotalProtein() {
+    return this.foodlist.reduce((acc, food) => acc + food.protein, 0);
+  }
+  getTotalCarbs() {
+    return this.foodlist.reduce((acc, food) => acc + food.carbs, 0);
+  }
+  getTotalFiber() {
+    return this.foodlist.reduce((acc, food) => acc + food.fiber, 0);
+  }
+  getTotalNetCarb() {
+    return this.foodlist.reduce((acc, food) => acc + food.netCarb, 0);
   }
 }
