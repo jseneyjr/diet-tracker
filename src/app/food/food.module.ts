@@ -10,6 +10,7 @@ import {MatTableModule,
         MatFormFieldModule,
         MatSelectModule,
         MatInputModule} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import {MatTableModule,
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   entryComponents: [

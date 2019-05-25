@@ -1,46 +1,58 @@
-<h1 mat-dialog-title>Add New Food!</h1>
-<div mat-dialog-content>
+<form id="add-food-form" (ngSubmit)="onSubmit()" novalidate>
 
-  <mat-form-field>
-    <input matInput #name placeholder="Name">
-  </mat-form-field>
+  <h1 mat-dialog-title>Add New Food!</h1>
 
-  <mat-form-field>
-    <input matInput #amount placeholder="Amount">
-  </mat-form-field>
+  <div mat-dialog-content>
+    <mat-form-field>
+      <input matInput placeholder="Name" [formControl]="name" required>
+      <mat-error *ngIf="name.invalid">Required</mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-select #unit placeholder="Unit">
-      <mat-option *ngFor="let unit of getUnits()" [value]="unit">
-        {{unit}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Amount" [formControl]="amount" required>
+      <mat-error *ngIf="amount.invalid">Required</mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput #calories placeholder="Calories">
-  </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Unit" [formControl]="unit" required>
+        <mat-option *ngFor="let unit of getUnits()" [value]="unit">
+          {{unit}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="unit.invalid">Required</mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput #fat placeholder="Fat">
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Calories" [formControl]="calories" required>
+      <mat-error *ngIf="calories.invalid">Required</mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput #protein placeholder="Protein">
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Fat" [formControl]="fat" required>
+      <mat-error *ngIf="fat.invalid">Required</mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput #carbs placeholder="Carbohydrates">
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Protein" [formControl]="protein" required>
+      <mat-error *ngIf="protein.invalid">Required</mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput #fiber placeholder="Fiber">
-  </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Carbohydrates" [formControl]="carbs" required>
+      <mat-error *ngIf="carbs.invalid">Required</mat-error>
+    </mat-form-field>
 
-</div>
-<div mat-dialog-actions>
-  <button mat-button
-    (click)="onAddClick(name.value, amount.value, unit.value, calories.value, fat.value,
-                        protein.value, carbs.value, fiber.value)">Add</button>
-  <button mat-button (click)="onCancelClick()">Cancel</button>
-</div>
+    <mat-form-field>
+      <input matInput placeholder="Fiber" [formControl]="fiber" required>
+      <mat-error *ngIf="fiber.invalid">Required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button type="submit" [disabled]="hasErrors()">Add</button>
+    <button mat-button type="button" (click)="onCancelClick()">Cancel</button>
+  </div>
+
+</form>
+
+

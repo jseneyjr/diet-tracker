@@ -49,8 +49,13 @@ export class FoodListComponent implements OnInit {
     });
 
     this.dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
+      if (result != null) {
+        this.saveFood(result);
+      }
     });
+  }
+
+  saveFood(food: Food) {
+    console.log(food);
   }
 }
