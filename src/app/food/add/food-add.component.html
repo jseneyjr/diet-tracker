@@ -1,58 +1,77 @@
-<form id="add-food-form" (ngSubmit)="onSubmit()" novalidate>
+<form (ngSubmit)="!hasErrors() && onSubmit()">
 
   <h1 mat-dialog-title>Add New Food!</h1>
 
   <div mat-dialog-content>
     <mat-form-field>
-      <input matInput placeholder="Name" [formControl]="name" required>
-      <mat-error *ngIf="name.invalid">Required</mat-error>
+      <input matInput placeholder="Name" [formControl]="name" [errorStateMatcher]="matcher" required>
+      <mat-error *ngIf="name.hasError('required')">
+        This field is required
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Amount" [formControl]="amount" required>
-      <mat-error *ngIf="amount.invalid">Required</mat-error>
+      <input matInput placeholder="Amount" [formControl]="amount" [errorStateMatcher]="matcher" required>
+      <mat-error *ngIf="amount.hasError('required')">This field is required</mat-error>
+      <mat-error *ngIf="amount.hasError('pattern') && !amount.hasError('required')">
+        Must only contain numbers
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Unit" [formControl]="unit" required>
+      <mat-select placeholder="Unit" [formControl]="unit" [errorStateMatcher]="matcher" required>
         <mat-option *ngFor="let unit of getUnits()" [value]="unitValues[unit]">
           {{unit}}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="unit.invalid">Required</mat-error>
+      <mat-error *ngIf="unit.hasError('required')">This field is required</mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Calories" [formControl]="calories" required>
-      <mat-error *ngIf="calories.invalid">Required</mat-error>
+      <input matInput placeholder="Calories" [formControl]="calories" [errorStateMatcher]="matcher" required>
+      <mat-error *ngIf="calories.hasError('required')">This field is required</mat-error>
+      <mat-error *ngIf="calories.hasError('pattern') && !calories.hasError('required')">
+        Must only contain numbers
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Fat" [formControl]="fat" required>
-      <mat-error *ngIf="fat.invalid">Required</mat-error>
+      <input matInput placeholder="Fat" [formControl]="fat" [errorStateMatcher]="matcher" required>
+      <mat-error *ngIf="fat.hasError('required')">This field is required</mat-error>
+      <mat-error *ngIf="fat.hasError('pattern') && !fat.hasError('required')">
+        Must only contain numbers
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Protein" [formControl]="protein" required>
-      <mat-error *ngIf="protein.invalid">Required</mat-error>
+      <input matInput placeholder="Protein" [formControl]="protein" [errorStateMatcher]="matcher" required>
+      <mat-error *ngIf="protein.hasError('required')">This field is required</mat-error>
+      <mat-error *ngIf="protein.hasError('pattern') && !protein.hasError('required')">
+        Must only contain numbers
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Carbohydrates" [formControl]="carbs" required>
-      <mat-error *ngIf="carbs.invalid">Required</mat-error>
+      <input matInput placeholder="Carbohydrates" [formControl]="carbs" [errorStateMatcher]="matcher" required>
+      <mat-error *ngIf="carbs.hasError('required')">This field is required</mat-error>
+      <mat-error *ngIf="carbs.hasError('pattern') && !carbs.hasError('required')">
+        Must only contain numbers
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Fiber" [formControl]="fiber" required>
-      <mat-error *ngIf="fiber.invalid">Required</mat-error>
+      <input matInput placeholder="Fiber" [formControl]="fiber" [errorStateMatcher]="matcher" required>
+      <mat-error *ngIf="fiber.hasError('required')">This field is required</mat-error>
+      <mat-error *ngIf="fiber.hasError('pattern') && !fiber.hasError('required')">
+        Must only contain numbers
+      </mat-error>
     </mat-form-field>
   </div>
 
   <div mat-dialog-actions>
-    <button mat-button type="submit" [disabled]="hasErrors()">Add</button>
+    <button mat-button type="submit">Add</button>
     <button mat-button type="button" (click)="onCancelClick()">Cancel</button>
   </div>
 
 </form>
-
 

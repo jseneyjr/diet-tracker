@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import { Units } from '../../shared/enums/units';
 import {MatDialogRef} from '@angular/material';
 import {Food} from '../../shared/models/food';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
+import {MyErrorStateMatcher} from '../../shared/error-state-matchers/my-error-state-matcher';
 
 @Component({
   selector: 'app-food-add',
@@ -10,15 +11,37 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['food-add.component.css'],
 })
 export class FoodAddComponent implements OnInit {
-  name = new FormControl('', [Validators.required]);
-  unit = new FormControl('', [Validators.required]);
-  amount = new FormControl('', [Validators.required]);
-  calories = new FormControl('', [Validators.required]);
-  fat = new FormControl('', [Validators.required]);
-  protein = new FormControl('', [Validators.required]);
-  carbs = new FormControl('', [Validators.required]);
-  fiber = new FormControl('', [Validators.required]);
+  matcher = new MyErrorStateMatcher();
+  name = new FormControl('',  [
+    Validators.required
+  ]);
+  unit = new FormControl('',  [
+    Validators.required
+  ]);
+  amount = new FormControl('', [
+    Validators.required, Validators.pattern('^[0-9]*$')
+  ]);
+  calories = new FormControl('', [
+    Validators.required, Validators.pattern('^[0-9]*$')
+  ]);
+  fat = new FormControl('', [
+    Validators.required, Validators.pattern('^[0-9]*$')
+  ]);
+  protein = new FormControl('', [
+    Validators.required, Validators.pattern('^[0-9]*$')
+  ]);
+  carbs = new FormControl('', [
+    Validators.required, Validators.pattern('^[0-9]*$')
+  ]);
+  fiber = new FormControl('', [
+    Validators.required, Validators.pattern('^[0-9]*$')
+  ]);
   unitValues = Units;
+
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
 
   constructor(private dialogRef: MatDialogRef<FoodAddComponent>) {}
 
