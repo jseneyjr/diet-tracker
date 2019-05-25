@@ -1,8 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {Component, OnInit, Inject, ViewChild} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatTable} from '@angular/material';
 import {ActivatedRoute} from '@angular/router';
 import {Food} from '../../shared/models/food';
 import {FoodAddComponent} from '../add/food-add.component';
+import {CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragHandle} from '@angular/cdk/drag-drop';
 
 
 @Component({
@@ -11,6 +12,7 @@ import {FoodAddComponent} from '../add/food-add.component';
   styleUrls: ['food-list.component.css'],
 })
 export class FoodListComponent implements OnInit {
+  @ViewChild('foodTable') foodTable: MatTable<Food>;
   foodlist: Food[];
   columnDefs: string[];
 
@@ -57,5 +59,11 @@ export class FoodListComponent implements OnInit {
 
   saveFood(food: Food) {
     console.log(food);
+  }
+
+  dropTable(event: CdkDragDrop<Food[]>) {
+    const prevIndex = this.foodlist.findIndex((d) => d === event.item.data);
+    moveItemInArray(this.foodlist, prevIndex, event.currentIndex);
+    this.foodTable.renderRows();
   }
 }
