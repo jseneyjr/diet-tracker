@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FoodListComponent } from './list/food-list.component';
 import {CommonModule} from '@angular/common';
+import {MatTableModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -12,8 +12,8 @@ import {CommonModule} from '@angular/common';
   imports: [
     BrowserModule,
     CommonModule,
-    AgGridModule.withComponents(null),
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule
   ],
   providers: []
 })

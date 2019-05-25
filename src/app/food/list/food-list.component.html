@@ -1,12 +1,50 @@
-<ag-grid-angular style="width: 100%;"
-                 class="ag-theme-balham"
-                 domLayout='autoHeight'
-                 [rowData]="foodlist"
-                 [columnDefs]="columnDefs"
-                 [animateRows]="true"
-                 [rowSelection]="rowSelection"
-                 suppressRowClickSelection
-                 suppressHorizontalScroll
-                 (cellValueChanged)="onCellValueChanged($event)">>
-</ag-grid-angular>
-<button (click)="onAddRow()">Add Row</button>
+<table mat-table [dataSource]="foodlist" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="unit">
+    <th mat-header-cell *matHeaderCellDef> Unit </th>
+    <td mat-cell *matCellDef="let element"> {{element.unit}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="amount">
+    <th mat-header-cell *matHeaderCellDef> Amount </th>
+    <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="calories">
+    <th mat-header-cell *matHeaderCellDef> Calories </th>
+    <td mat-cell *matCellDef="let element"> {{element.calories}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fat">
+    <th mat-header-cell *matHeaderCellDef> Fat </th>
+    <td mat-cell *matCellDef="let element"> {{element.fat}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="protein">
+    <th mat-header-cell *matHeaderCellDef> Protein </th>
+    <td mat-cell *matCellDef="let element"> {{element.protein}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="carbs">
+    <th mat-header-cell *matHeaderCellDef> Carbs </th>
+    <td mat-cell *matCellDef="let element"> {{element.carbs}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fiber">
+    <th mat-header-cell *matHeaderCellDef> Fiber </th>
+    <td mat-cell *matCellDef="let element"> {{element.fiber}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="netCarb">
+    <th mat-header-cell *matHeaderCellDef> Net Carbs </th>
+    <td mat-cell *matCellDef="let element"> {{element.netCarb}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnDefs"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnDefs;"></tr>
+</table>

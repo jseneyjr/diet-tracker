@@ -5,11 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AgGridModule } from 'ag-grid-angular';
-
 import { FoodService } from './services/food.service';
 import {FoodModule} from './food/food.module';
 import {FoodResolver} from './food/resolvers/food.resolve';
+import {MatTableModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,7 @@ import {FoodResolver} from './food/resolvers/food.resolve';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AgGridModule.withComponents(null),
+    MatTableModule,
     HttpClientModule,
     FoodModule
   ],
