@@ -18,6 +18,7 @@ export class FoodAddComponent implements OnInit {
   protein = new FormControl('', [Validators.required]);
   carbs = new FormControl('', [Validators.required]);
   fiber = new FormControl('', [Validators.required]);
+  unitValues = Units;
 
   constructor(private dialogRef: MatDialogRef<FoodAddComponent>) {}
 

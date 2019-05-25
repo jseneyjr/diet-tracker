@@ -15,7 +15,7 @@
 
     <mat-form-field>
       <mat-select placeholder="Unit" [formControl]="unit" required>
-        <mat-option *ngFor="let unit of getUnits()" [value]="unit">
+        <mat-option *ngFor="let unit of getUnits()" [value]="unitValues[unit]">
           {{unit}}
         </mat-option>
       </mat-select>
