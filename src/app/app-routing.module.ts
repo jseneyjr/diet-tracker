@@ -4,8 +4,20 @@ import {Error404PageComponent} from './ui/404/error-404-page-component';
 
 const routes: Routes = [
   {
+    path: '',
+    loadChildren: './overview/overview.module#OverviewModule'
+  },
+  {
     path: 'foods',
     loadChildren: './food/food.module#FoodModule'
+  },
+  {
+    path: 'recipes',
+    loadChildren: './recipe/recipe.module#RecipeModule'
+  },
+  {
+    path: 'caloriecalc',
+    loadChildren: './calorie-calc/calorie-calc.module#CalorieCalcModule'
   },
   {
     path: '404',
