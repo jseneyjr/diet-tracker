@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import {FoodPageComponent} from './home/components/food-page/food-page.component';
-import {FoodPageResolver} from './home/resolvers/food-page.resolver';
+import {FoodPageComponent} from './components/food-page/food-page.component';
+import {FoodPageResolver} from './resolvers/food-page.resolver';
 
 
 const routes: Routes = [
@@ -20,4 +20,4 @@ const routes: Routes = [
   providers: [FoodPageResolver],
   exports: [RouterModule]
 })
-export class FoodRoutingModule { }
+export class FoodHomeRoutingModule { }
