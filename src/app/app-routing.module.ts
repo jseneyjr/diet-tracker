@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {FoodListComponent} from './food/list/food-list.component';
-import {FoodResolver} from './food/resolvers/food.resolve';
+import {FoodPageComponent} from './food/home/components/food-page/food-page.component';
+import {FoodPageResolver} from './food/home/resolvers/food-page.resolver';
 
 const routes: Routes = [
   {
-    path: 'foodlist',
-    component: FoodListComponent,
+    path: 'foods',
+    component: FoodPageComponent,
     resolve: {
-      foodlist: FoodResolver
+      foodlist: FoodPageResolver
     }
   }
 ];
