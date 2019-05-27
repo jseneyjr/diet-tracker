@@ -1,8 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import {FoodPageComponent} from './home/components/food-page/food-page.component';
-import {FoodPageResolver} from './home/resolvers/food-page.resolver';
 import {FoodListComponent} from './list/components/food-list/food-list.component';
 import {FoodListAddComponent} from './list/components/food-list-add/food-list-add.component';
 import {FoodService} from './services/food.service';
@@ -15,6 +13,7 @@ import {MatTableModule,
         MatInputModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import {FoodRoutingModule} from './food-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,6 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     FoodListAddComponent
   ],
   imports: [
-    BrowserModule,
     CommonModule,
     HttpClientModule,
     MatTableModule,
@@ -34,10 +32,10 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    DragDropModule
+    DragDropModule,
+    FoodRoutingModule
   ],
   providers: [
-    FoodPageResolver,
     FoodService
   ],
   entryComponents: [

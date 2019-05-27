@@ -5,9 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-
-import {FoodModule} from './food/food.module';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UiModule } from './ui/ui.module';
 
@@ -19,7 +16,6 @@ import { UiModule } from './ui/ui.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FoodModule,
     BrowserAnimationsModule,
     UiModule
   ],
