@@ -1,9 +1,9 @@
-import {Component, OnInit, Inject, ViewChild} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatTable} from '@angular/material';
+import {Component, OnInit, ViewChild, Input} from '@angular/core';
+import {MatDialog, MatDialogRef, MatTable} from '@angular/material';
 import {ActivatedRoute} from '@angular/router';
 import {Food} from '../../shared/models/food';
 import {FoodAddComponent} from '../add/food-add.component';
-import {CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragHandle} from '@angular/cdk/drag-drop';
+import {CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 
 @Component({
@@ -15,8 +15,8 @@ export class FoodListComponent implements OnInit {
   @ViewChild('foodTable') foodTable: MatTable<Food>;
   foodlist: Food[];
   columnDefs: string[];
-
   dialogRef: MatDialogRef<FoodAddComponent>;
+  @Input() showTotals: boolean;
 
   constructor(private route: ActivatedRoute,
               public dialog: MatDialog) {}
