@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild, Input} from '@angular/core';
 import {MatDialog, MatDialogRef, MatTable} from '@angular/material';
-import {ActivatedRoute} from '@angular/router';
 import {Food} from '../../../../shared/models/food';
 import { FoodListAddComponent } from '../food-list-add/food-list-add.component';
 import {CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
@@ -13,19 +12,14 @@ import {CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export class FoodListComponent implements OnInit {
   @ViewChild('foodTable') foodTable: MatTable<Food>;
-  foodlist: Food[];
+  @Input() showTotals: boolean;
+  @Input() foodlist: Food[];
   columnDefs: string[];
   dialogRef: MatDialogRef<FoodListAddComponent>;
-  @Input() showTotals: boolean;
 
-  constructor(private route: ActivatedRoute,
-              public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
-    const data = this.route.snapshot.data;
-    const list: Food[] = data.foodlist;
-    this.foodlist = list.map(food =>
-      new Food(food.name, food.amount, food.unit, food.calories, food.fat, food.protein, food.carbs, food.fiber));
     this.columnDefs = ['name', 'amount', 'unit', 'calories', 'fat', 'protein', 'carbs', 'fiber', 'netCarb'];
   }
 
