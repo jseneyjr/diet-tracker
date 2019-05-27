@@ -1,0 +1,11 @@
+<nav class="navbar navbar-dark bg-dark mb-5">
+  <a class="navbar-brand" href="/">Diet Tracker</a>
+  <div class="navbar-expand mr-auto">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" [ngClass]="{active: isActive('/')}" href="">Overview</a>
+      <a class="nav-item nav-link" [ngClass]="{active: isActive('/foodlist')}" href="foodlist">Food List</a>
+      <a class="nav-item nav-link" [ngClass]="{active: isActive('/recipes')}" href="#">Recipes</a>
+      <a class="nav-item nav-link" [ngClass]="{active: isActive('/caloriecalc')}" href="#">Calorie Calculator</a>
+    </div>
+  </div>
+</nav>

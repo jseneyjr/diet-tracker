@@ -9,6 +9,7 @@ import { FoodService } from './services/food.service';
 import {FoodModule} from './food/food.module';
 import {FoodResolver} from './food/resolvers/food.resolve';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UiModule } from './ui/ui.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     FoodModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    UiModule
   ],
   providers: [
     FoodService,
