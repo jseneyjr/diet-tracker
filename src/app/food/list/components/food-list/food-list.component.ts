@@ -16,10 +16,21 @@ export class FoodListComponent implements OnInit {
   @Input() foodlist: Food[];
   columnDefs: string[];
   dialogRef: MatDialogRef<FoodListAddComponent>;
+  totalCalories: number;
+  totalFat: number;
+  totalProtein: number;
+  totalCarbs: number;
+  totalFiber: number;
 
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
+    this.totalCalories = this.getTotalCalories();
+    this.totalFat = this.getTotalFat();
+    this.totalProtein = this.getTotalProtein();
+    this.totalCarbs = this.getTotalCarbs();
+    this.totalFiber = this.getTotalFiber();
+
     this.columnDefs = ['name', 'amount', 'unit', 'calories', 'fat', 'protein', 'carbs', 'fiber', 'netCarb'];
   }
 
