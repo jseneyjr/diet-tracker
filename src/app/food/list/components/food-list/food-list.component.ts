@@ -2,7 +2,6 @@ import {Component, OnInit, ViewChild, Input} from '@angular/core';
 import {MatDialog, MatDialogRef, MatTable} from '@angular/material';
 import {Food} from '../../../../shared/models/food';
 import { FoodListAddComponent } from '../food-list-add/food-list-add.component';
-import {CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 
 @Component({
@@ -65,12 +64,6 @@ export class FoodListComponent implements OnInit {
   saveFood(food: Food) {
     // Save to DB, if successful push to table
     this.foodlist.push(food);
-    this.foodTable.renderRows();
-  }
-
-  dropTable(event: CdkDragDrop<Food[]>) {
-    const prevIndex = this.foodlist.findIndex((d) => d === event.item.data);
-    moveItemInArray(this.foodlist, prevIndex, event.currentIndex);
     this.foodTable.renderRows();
   }
 }

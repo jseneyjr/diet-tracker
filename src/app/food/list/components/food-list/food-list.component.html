@@ -1,5 +1,4 @@
-<mat-table #foodTable [dataSource]="foodlist" class="mat-elevation-z8 food-table"
-       cdkDropList [cdkDropListData]="foodlist" (cdkDropListDropped)="dropTable($event)">
+<mat-table #foodTable [dataSource]="foodlist" class="mat-elevation-z8 food-table">
 
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
@@ -56,7 +55,7 @@
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="columnDefs"></mat-header-row>
-  <mat-row class="food-row" *matRowDef="let row; columns: columnDefs;" cdkDrag [cdkDragData]="row"></mat-row>
+  <mat-row *matRowDef="let row; columns: columnDefs;"></mat-row>
   <div *ngIf="showTotals"><mat-footer-row *matFooterRowDef="columnDefs"></mat-footer-row></div>
 </mat-table>
 <br/>
