@@ -1,16 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import { Units } from '../../shared/enums/units';
+import { Units } from '../../../../shared/enums/units';
 import {MatDialogRef} from '@angular/material';
-import {Food} from '../../shared/models/food';
+import {Food} from '../../../../shared/models/food';
 import {FormControl, Validators} from '@angular/forms';
-import {MyErrorStateMatcher} from '../../shared/error-state-matchers/my-error-state-matcher';
+import {MyErrorStateMatcher} from '../../../../shared/error-state-matchers/my-error-state-matcher';
 
 @Component({
-  selector: 'app-food-add',
-  templateUrl: 'food-add.component.html',
-  styleUrls: ['food-add.component.css'],
+  selector: 'app-food-list-add',
+  templateUrl: 'food-list-add.component.html',
+  styleUrls: ['food-list-add.component.css'],
 })
-export class FoodAddComponent implements OnInit {
+export class FoodListAddComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   name = new FormControl('',  [
     Validators.required
@@ -38,12 +38,7 @@ export class FoodAddComponent implements OnInit {
   ]);
   unitValues = Units;
 
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
-
-  constructor(private dialogRef: MatDialogRef<FoodAddComponent>) {}
+  constructor(private dialogRef: MatDialogRef<FoodListAddComponent>) {}
 
   ngOnInit() {
 

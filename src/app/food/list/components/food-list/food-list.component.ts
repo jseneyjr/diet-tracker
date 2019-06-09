@@ -1,8 +1,7 @@
 import {Component, OnInit, ViewChild, Input} from '@angular/core';
 import {MatDialog, MatDialogRef, MatTable} from '@angular/material';
-import {ActivatedRoute} from '@angular/router';
-import {Food} from '../../shared/models/food';
-import {FoodAddComponent} from '../add/food-add.component';
+import {Food} from '../../../../shared/models/food';
+import { FoodListAddComponent } from '../food-list-add/food-list-add.component';
 import {CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 
@@ -13,19 +12,25 @@ import {CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export class FoodListComponent implements OnInit {
   @ViewChild('foodTable') foodTable: MatTable<Food>;
-  foodlist: Food[];
-  columnDefs: string[];
-  dialogRef: MatDialogRef<FoodAddComponent>;
   @Input() showTotals: boolean;
+  @Input() foodlist: Food[];
+  columnDefs: string[];
+  dialogRef: MatDialogRef<FoodListAddComponent>;
+  totalCalories: number;
+  totalFat: number;
+  totalProtein: number;
+  totalCarbs: number;
+  totalFiber: number;
 
-  constructor(private route: ActivatedRoute,
-              public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
-    const data = this.route.snapshot.data;
-    const list: Food[] = data.foodlist;
-    this.foodlist = list.map(food =>
-      new Food(food.name, food.amount, food.unit, food.calories, food.fat, food.protein, food.carbs, food.fiber));
+    this.totalCalories = this.getTotalCalories();
+    this.totalFat = this.getTotalFat();
+    this.totalProtein = this.getTotalProtein();
+    this.totalCarbs = this.getTotalCarbs();
+    this.totalFiber = this.getTotalFiber();
+
     this.columnDefs = ['name', 'amount', 'unit', 'calories', 'fat', 'protein', 'carbs', 'fiber', 'netCarb'];
   }
 
@@ -46,7 +51,7 @@ export class FoodListComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialogRef = this.dialog.open(FoodAddComponent, {
+    this.dialogRef = this.dialog.open(FoodListAddComponent, {
       width: '500px'
     });
 
