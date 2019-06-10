@@ -24,13 +24,17 @@ export class FoodListComponent implements OnInit {
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
+    this.calculateTotals();
+
+    this.columnDefs = ['name', 'amount', 'unit', 'calories', 'fat', 'protein', 'carbs', 'fiber', 'netCarb', 'edit', 'delete'];
+  }
+
+  calculateTotals(){
     this.totalCalories = this.getTotalCalories();
     this.totalFat = this.getTotalFat();
     this.totalProtein = this.getTotalProtein();
     this.totalCarbs = this.getTotalCarbs();
     this.totalFiber = this.getTotalFiber();
-
-    this.columnDefs = ['name', 'amount', 'unit', 'calories', 'fat', 'protein', 'carbs', 'fiber', 'netCarb'];
   }
 
   getTotalCalories() {
@@ -49,7 +53,7 @@ export class FoodListComponent implements OnInit {
     return this.foodlist.reduce((acc, food) => acc + food.fiber, 0);
   }
 
-  openDialog() {
+  openCreateDialog() {
     this.dialogRef = this.dialog.open(FoodListAddComponent, {
       width: '500px'
     });
@@ -64,6 +68,38 @@ export class FoodListComponent implements OnInit {
   saveFood(food: Food) {
     // Save to DB, if successful push to table
     this.foodlist.push(food);
+    this.calculateTotals();
     this.foodTable.renderRows();
+  }
+
+  // Open dialog for updating row
+  openUpdateDialog(event: Food) {
+    this.dialogRef = this.dialog.open(FoodListAddComponent, {
+      width: '500px',
+      data: {
+        food: event
+      }
+    });
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      if (result != null) {
+        this.updateFood(result, this.foodlist.indexOf(event));
+      }
+    });
+  }
+
+  updateFood(food: Food, index: number) {
+    this.foodlist[index] = food;
+    this.calculateTotals();
+    this.foodTable.renderRows();
+  }
+
+  deleteFood(event: Food) {
+    const index: number = this.foodlist.indexOf(event);
+    if (index !== -1) {
+      this.foodlist.splice(index, 1);
+      this.calculateTotals();
+      this.foodTable.renderRows();
+    }
   }
 }

@@ -11,7 +11,8 @@ import {MatTableModule,
   MatButtonModule,
   MatFormFieldModule,
   MatSelectModule,
-  MatInputModule} from '@angular/material';
+  MatInputModule,
+  MatIconModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
@@ -27,6 +28,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
     FoodShareModule

@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import { Units } from '../../../../shared/enums/units';
-import {MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Food} from '../../../../shared/models/food';
 import {FormControl, Validators} from '@angular/forms';
 import {MyErrorStateMatcher} from '../../../../shared/error-state-matchers/my-error-state-matcher';
@@ -38,10 +38,20 @@ export class FoodListAddComponent implements OnInit {
   ]);
   unitValues = Units;
 
-  constructor(private dialogRef: MatDialogRef<FoodListAddComponent>) {}
+  constructor(private dialogRef: MatDialogRef<FoodListAddComponent>,
+              @Inject(MAT_DIALOG_DATA) private data) {}
 
   ngOnInit() {
-
+    if (this.data != null) {
+      this.name.value = this.data.food.name;
+      this.amount.value = this.data.food.amount;
+      this.unit.value = this.data.food.unit;
+      this.calories.value = this.data.food.calories;
+      this.fat.value = this.data.food.fat;
+      this.protein.value = this.data.food.protein;
+      this.carbs.value = this.data.food.carbs;
+      this.fiber.value = this.data.food.fiber;
+    }
   }
 
   getUnits() {

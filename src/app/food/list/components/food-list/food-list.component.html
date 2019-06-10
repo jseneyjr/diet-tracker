@@ -54,9 +54,25 @@
     <mat-footer-cell *matFooterCellDef> {{totalCarbs - totalFiber}} </mat-footer-cell>
   </ng-container>
 
+  <ng-container matColumnDef="edit">
+    <mat-header-cell *matHeaderCellDef> &nbsp; </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-button (click)="openUpdateDialog(element)"><mat-icon>edit</mat-icon></button>
+    </mat-cell>
+    <mat-footer-cell *matFooterCellDef> &nbsp; </mat-footer-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <mat-header-cell *matHeaderCellDef> &nbsp; </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-button (click)="deleteFood(element)"><mat-icon>delete</mat-icon></button>
+    </mat-cell>
+    <mat-footer-cell *matFooterCellDef> &nbsp; </mat-footer-cell>
+  </ng-container>
+
   <mat-header-row *matHeaderRowDef="columnDefs"></mat-header-row>
   <mat-row *matRowDef="let row; columns: columnDefs;"></mat-row>
   <div *ngIf="showTotals"><mat-footer-row *matFooterRowDef="columnDefs"></mat-footer-row></div>
 </mat-table>
 <br/>
-<button mat-raised-button (click)="openDialog()">Add</button>
+<button mat-raised-button (click)="openCreateDialog()">Add</button>

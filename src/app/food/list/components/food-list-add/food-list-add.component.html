@@ -69,7 +69,8 @@
   </div>
 
   <div mat-dialog-actions>
-    <button mat-button type="submit">Add</button>
+    <button mat-button type="submit" *ngIf="this.data === null">Add</button>
+    <button mat-button type="submit" *ngIf="this.data !== null">Update</button>
     <button mat-button type="button" (click)="onCancelClick()">Cancel</button>
   </div>
 
