@@ -5,15 +5,8 @@ import {FoodShareModule} from '../food-share.module';
 
 import {FoodListComponent} from './components/food-list/food-list.component';
 import {FoodListDialogComponent} from './components/food-list-dialog/food-list-dialog.component';
-
-import {MatTableModule,
-  MatDialogModule,
-  MatButtonModule,
-  MatFormFieldModule,
-  MatSelectModule,
-  MatInputModule,
-  MatIconModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MaterialModule} from '../../shared/modules/material-ui/material-ui.module';
 
 @NgModule({
   declarations: [
@@ -22,16 +15,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    MatTableModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    FoodShareModule
+    FoodShareModule,
+    MaterialModule
   ],
   exports: [
     FoodListComponent
