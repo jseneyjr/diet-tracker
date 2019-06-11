@@ -4,21 +4,21 @@ import {CommonModule} from '@angular/common';
 import {FoodShareModule} from '../food-share.module';
 
 import {FoodListComponent} from './components/food-list/food-list.component';
-import {FoodListAddComponent} from './components/food-list-add/food-list-add.component';
+import {FoodListDialogComponent} from './components/food-list-dialog/food-list-dialog.component';
 
 import {MatTableModule,
   MatDialogModule,
   MatButtonModule,
   MatFormFieldModule,
   MatSelectModule,
-  MatInputModule} from '@angular/material';
+  MatInputModule,
+  MatIconModule} from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {DragDropModule} from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
     FoodListComponent,
-    FoodListAddComponent
+    FoodListDialogComponent
   ],
   imports: [
     CommonModule,
@@ -28,9 +28,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    DragDropModule,
     FoodShareModule
   ],
   exports: [
@@ -38,7 +38,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
   ],
   providers: [ ],
   entryComponents: [
-    FoodListAddComponent
+    FoodListDialogComponent
   ]
 })
 export class FoodListModule { }

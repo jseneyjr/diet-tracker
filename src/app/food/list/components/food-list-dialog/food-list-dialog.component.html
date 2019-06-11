@@ -1,7 +1,4 @@
 <form (ngSubmit)="!hasErrors() && onSubmit()">
-
-  <h1 mat-dialog-title>Add New Food!</h1>
-
   <div mat-dialog-content>
     <mat-form-field>
       <input matInput placeholder="Name" [formControl]="name" [errorStateMatcher]="matcher" required>
@@ -69,7 +66,8 @@
   </div>
 
   <div mat-dialog-actions>
-    <button mat-button type="submit">Add</button>
+    <button mat-button type="submit" *ngIf="this.data === null">Add</button>
+    <button mat-button type="submit" *ngIf="this.data !== null">Update</button>
     <button mat-button type="button" (click)="onCancelClick()">Cancel</button>
   </div>
 

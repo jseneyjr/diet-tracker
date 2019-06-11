@@ -1,16 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import { Units } from '../../../../shared/enums/units';
-import {MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Food} from '../../../../shared/models/food';
 import {FormControl, Validators} from '@angular/forms';
 import {MyErrorStateMatcher} from '../../../../shared/error-state-matchers/my-error-state-matcher';
 
 @Component({
-  selector: 'app-food-list-add',
-  templateUrl: 'food-list-add.component.html',
-  styleUrls: ['food-list-add.component.css'],
+  selector: 'app-food-list-dialog',
+  templateUrl: 'food-list-dialog.component.html',
+  styleUrls: ['food-list-dialog.component.css'],
 })
-export class FoodListAddComponent implements OnInit {
+export class FoodListDialogComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   name = new FormControl('',  [
     Validators.required
@@ -38,10 +38,20 @@ export class FoodListAddComponent implements OnInit {
   ]);
   unitValues = Units;
 
-  constructor(private dialogRef: MatDialogRef<FoodListAddComponent>) {}
+  constructor(private dialogRef: MatDialogRef<FoodListDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) private data) {}
 
   ngOnInit() {
-
+    if (this.data != null) {
+      this.name.setValue(this.data.food.name);
+      this.amount.setValue(this.data.food.amount);
+      this.unit.setValue(this.data.food.unit);
+      this.calories.setValue(this.data.food.calories);
+      this.fat.setValue(this.data.food.fat);
+      this.protein.setValue(this.data.food.protein);
+      this.carbs.setValue(this.data.food.carbs);
+      this.fiber.setValue(this.data.food.fiber);
+    }
   }
 
   getUnits() {

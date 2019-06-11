@@ -1,5 +1,4 @@
-<mat-table #foodTable [dataSource]="foodlist" class="mat-elevation-z8 food-table"
-       cdkDropList [cdkDropListData]="foodlist" (cdkDropListDropped)="dropTable($event)">
+<mat-table #foodTable [dataSource]="foodlist" class="mat-elevation-z8 food-table">
 
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
@@ -55,9 +54,25 @@
     <mat-footer-cell *matFooterCellDef> {{totalCarbs - totalFiber}} </mat-footer-cell>
   </ng-container>
 
+  <ng-container matColumnDef="edit">
+    <mat-header-cell *matHeaderCellDef> &nbsp; </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-button (click)="openUpdateDialog(element)"><mat-icon>edit</mat-icon></button>
+    </mat-cell>
+    <mat-footer-cell *matFooterCellDef> &nbsp; </mat-footer-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <mat-header-cell *matHeaderCellDef> &nbsp; </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-button (click)="deleteFood(element)"><mat-icon>delete</mat-icon></button>
+    </mat-cell>
+    <mat-footer-cell *matFooterCellDef> &nbsp; </mat-footer-cell>
+  </ng-container>
+
   <mat-header-row *matHeaderRowDef="columnDefs"></mat-header-row>
-  <mat-row class="food-row" *matRowDef="let row; columns: columnDefs;" cdkDrag [cdkDragData]="row"></mat-row>
+  <mat-row *matRowDef="let row; columns: columnDefs;"></mat-row>
   <div *ngIf="showTotals"><mat-footer-row *matFooterRowDef="columnDefs"></mat-footer-row></div>
 </mat-table>
 <br/>
-<button mat-raised-button (click)="openDialog()">Add</button>
+<button mat-raised-button (click)="openCreateDialog()">Add</button>
