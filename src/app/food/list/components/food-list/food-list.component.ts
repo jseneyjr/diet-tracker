@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild, Input} from '@angular/core';
 import {MatDialog, MatDialogRef, MatTable} from '@angular/material';
 import {Food} from '../../../../shared/models/food';
-import { FoodListAddComponent } from '../food-list-add/food-list-add.component';
+import { FoodListDialogComponent } from '../food-list-dialog/food-list-dialog.component';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class FoodListComponent implements OnInit {
   @Input() showTotals: boolean;
   @Input() foodlist: Food[];
   columnDefs: string[];
-  dialogRef: MatDialogRef<FoodListAddComponent>;
+  dialogRef: MatDialogRef<FoodListDialogComponent>;
   totalCalories: number;
   totalFat: number;
   totalProtein: number;
@@ -54,7 +54,7 @@ export class FoodListComponent implements OnInit {
   }
 
   openCreateDialog() {
-    this.dialogRef = this.dialog.open(FoodListAddComponent, {
+    this.dialogRef = this.dialog.open(FoodListDialogComponent, {
       width: '500px'
     });
 
@@ -74,7 +74,7 @@ export class FoodListComponent implements OnInit {
 
   // Open dialog for updating row
   openUpdateDialog(event: Food) {
-    this.dialogRef = this.dialog.open(FoodListAddComponent, {
+    this.dialogRef = this.dialog.open(FoodListDialogComponent, {
       width: '500px',
       data: {
         food: event

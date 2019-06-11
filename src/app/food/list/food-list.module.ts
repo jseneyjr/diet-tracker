@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import {FoodShareModule} from '../food-share.module';
 
 import {FoodListComponent} from './components/food-list/food-list.component';
-import {FoodListAddComponent} from './components/food-list-add/food-list-add.component';
+import {FoodListDialogComponent} from './components/food-list-dialog/food-list-dialog.component';
 
 import {MatTableModule,
   MatDialogModule,
@@ -18,7 +18,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     FoodListComponent,
-    FoodListAddComponent
+    FoodListDialogComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +38,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   ],
   providers: [ ],
   entryComponents: [
-    FoodListAddComponent
+    FoodListDialogComponent
   ]
 })
 export class FoodListModule { }

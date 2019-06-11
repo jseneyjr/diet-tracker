@@ -6,11 +6,11 @@ import {FormControl, Validators} from '@angular/forms';
 import {MyErrorStateMatcher} from '../../../../shared/error-state-matchers/my-error-state-matcher';
 
 @Component({
-  selector: 'app-food-list-add',
-  templateUrl: 'food-list-add.component.html',
-  styleUrls: ['food-list-add.component.css'],
+  selector: 'app-food-list-dialog',
+  templateUrl: 'food-list-dialog.component.html',
+  styleUrls: ['food-list-dialog.component.css'],
 })
-export class FoodListAddComponent implements OnInit {
+export class FoodListDialogComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   name = new FormControl('',  [
     Validators.required
@@ -38,7 +38,7 @@ export class FoodListAddComponent implements OnInit {
   ]);
   unitValues = Units;
 
-  constructor(private dialogRef: MatDialogRef<FoodListAddComponent>,
+  constructor(private dialogRef: MatDialogRef<FoodListDialogComponent>,
               @Inject(MAT_DIALOG_DATA) private data) {}
 
   ngOnInit() {
