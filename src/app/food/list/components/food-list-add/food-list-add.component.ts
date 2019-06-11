@@ -43,14 +43,14 @@ export class FoodListAddComponent implements OnInit {
 
   ngOnInit() {
     if (this.data != null) {
-      this.name.value = this.data.food.name;
-      this.amount.value = this.data.food.amount;
-      this.unit.value = this.data.food.unit;
-      this.calories.value = this.data.food.calories;
-      this.fat.value = this.data.food.fat;
-      this.protein.value = this.data.food.protein;
-      this.carbs.value = this.data.food.carbs;
-      this.fiber.value = this.data.food.fiber;
+      this.name.setValue(this.data.food.name);
+      this.amount.setValue(this.data.food.amount);
+      this.unit.setValue(this.data.food.unit);
+      this.calories.setValue(this.data.food.calories);
+      this.fat.setValue(this.data.food.fat);
+      this.protein.setValue(this.data.food.protein);
+      this.carbs.setValue(this.data.food.carbs);
+      this.fiber.setValue(this.data.food.fiber);
     }
   }
 
