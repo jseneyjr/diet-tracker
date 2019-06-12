@@ -1,5 +1,3 @@
-import {Units} from '../enums/units';
-
 export class Food {
   name: string;
   amount: number;

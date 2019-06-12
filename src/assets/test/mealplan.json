@@ -1,0 +1,56 @@
+
+  {
+    "name": "plan a",
+    "meals": [
+      {
+        "name": "Breakfast",
+        "foods": [
+          {
+            "name": "Eggs",
+            "unit": "oz",
+            "amount": 4,
+            "calories": 100,
+            "fat": 0,
+            "protein": 20,
+            "carbs": 2,
+            "fiber": 0
+          },
+          {
+            "name": "Milk",
+            "unit": "g",
+            "amount": 3,
+            "calories": 200,
+            "fat": 1,
+            "protein": 2,
+            "carbs": 5,
+            "fiber": 1
+          }
+        ]
+      },
+      {
+        "name": "Lunch",
+        "foods": [
+          {
+            "name": "Chicken",
+            "unit": "oz",
+            "amount": 4,
+            "calories": 100,
+            "fat": 0,
+            "protein": 20,
+            "carbs": 2,
+            "fiber": 0
+          },
+          {
+            "name": "Bread",
+            "unit": "g",
+            "amount": 3,
+            "calories": 200,
+            "fat": 1,
+            "protein": 2,
+            "carbs": 5,
+            "fiber": 1
+          }
+        ]
+      }
+    ]
+  }

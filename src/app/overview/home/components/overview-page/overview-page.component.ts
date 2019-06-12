@@ -13,5 +13,6 @@ export class OverviewPageComponent implements OnInit {
 
   ngOnInit() {
     const data = this.route.snapshot.data;
+    console.log(data);
   }
 }
