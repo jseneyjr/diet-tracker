@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {MealPlan} from '../../../../shared/models/meal-plan';
 
 @Component({
   selector: 'app-overview-page',
@@ -8,11 +9,13 @@ import {ActivatedRoute} from '@angular/router';
 })
 
 export class OverviewPageComponent implements OnInit {
+  mealplan: MealPlan;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     const data = this.route.snapshot.data;
-    console.log(data);
+    this.mealplan = data.mealplan;
+    console.log(this.mealplan);
   }
 }

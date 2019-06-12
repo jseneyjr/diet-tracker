@@ -1,4 +1,4 @@
-<mat-table #foodTable [dataSource]="foodlist" class="mat-elevation-z8 food-table">
+<mat-table #foodTable [dataSource]="foodlist.foods" class="mat-elevation-z8 food-table">
 
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
@@ -21,37 +21,37 @@
   <ng-container matColumnDef="calories">
     <mat-header-cell *matHeaderCellDef> Calories </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.calories}} </mat-cell>
-    <mat-footer-cell *matFooterCellDef> {{totalCalories}} </mat-footer-cell>
+    <mat-footer-cell *matFooterCellDef> {{foodlist.totalCalories}} </mat-footer-cell>
   </ng-container>
 
   <ng-container matColumnDef="fat">
     <mat-header-cell *matHeaderCellDef> Fat </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.fat}} </mat-cell>
-    <mat-footer-cell *matFooterCellDef> {{totalFat}} </mat-footer-cell>
+    <mat-footer-cell *matFooterCellDef> {{foodlist.totalFat}} </mat-footer-cell>
   </ng-container>
 
   <ng-container matColumnDef="protein">
     <mat-header-cell *matHeaderCellDef> Protein </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.protein}} </mat-cell>
-    <mat-footer-cell *matFooterCellDef> {{totalProtein}} </mat-footer-cell>
+    <mat-footer-cell *matFooterCellDef> {{foodlist.totalProtein}} </mat-footer-cell>
   </ng-container>
 
   <ng-container matColumnDef="carbs">
     <mat-header-cell *matHeaderCellDef> Carbs </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.carbs}} </mat-cell>
-    <mat-footer-cell *matFooterCellDef> {{totalCarbs}} </mat-footer-cell>
+    <mat-footer-cell *matFooterCellDef> {{foodlist.totalCarbs}} </mat-footer-cell>
   </ng-container>
 
   <ng-container matColumnDef="fiber">
     <mat-header-cell *matHeaderCellDef> Fiber </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.fiber}} </mat-cell>
-    <mat-footer-cell *matFooterCellDef> {{totalFiber}} </mat-footer-cell>
+    <mat-footer-cell *matFooterCellDef> {{foodlist.totalFiber}} </mat-footer-cell>
   </ng-container>
 
   <ng-container matColumnDef="netCarb">
     <mat-header-cell *matHeaderCellDef> Net Carbs </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.netCarb}} </mat-cell>
-    <mat-footer-cell *matFooterCellDef> {{totalCarbs - totalFiber}} </mat-footer-cell>
+    <mat-footer-cell *matFooterCellDef> {{foodlist.totalNetCarbs}} </mat-footer-cell>
   </ng-container>
 
   <ng-container matColumnDef="edit">

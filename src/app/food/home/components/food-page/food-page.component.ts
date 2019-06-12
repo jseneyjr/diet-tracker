@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Food} from '../../../../shared/models/food';
+import {FoodList} from '../../../../shared/models/food-list';
 
 @Component({
   selector: 'app-food-page',
@@ -9,14 +10,14 @@ import {Food} from '../../../../shared/models/food';
 })
 
 export class FoodPageComponent implements OnInit {
-  foodlist: Food[];
+  foodlist: FoodList;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
     const data = this.route.snapshot.data;
     const list: Food[] = data.foodlist;
-    this.foodlist = list.map(food =>
-      new Food(food.name, food.amount, food.unit, food.calories, food.fat, food.protein, food.carbs, food.fiber));
+    this.foodlist = new FoodList(list.map(food =>
+      new Food(food.name, food.amount, food.unit, food.calories, food.fat, food.protein, food.carbs, food.fiber)));
   }
 }

@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild, Input} from '@angular/core';
 import {MatDialog, MatDialogRef, MatTable} from '@angular/material';
+import {FoodList} from '../../../../shared/models/food-list';
 import {Food} from '../../../../shared/models/food';
 import { FoodListDialogComponent } from '../food-list-dialog/food-list-dialog.component';
 
@@ -12,45 +13,17 @@ import { FoodListDialogComponent } from '../food-list-dialog/food-list-dialog.co
 export class FoodListComponent implements OnInit {
   @ViewChild('foodTable') foodTable: MatTable<Food>;
   @Input() showTotals: boolean;
-  @Input() foodlist: Food[];
+  @Input() foodlist: FoodList;
   columnDefs: string[];
   dialogRef: MatDialogRef<FoodListDialogComponent>;
-  totalCalories: number;
-  totalFat: number;
-  totalProtein: number;
-  totalCarbs: number;
-  totalFiber: number;
+
 
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {
-    this.calculateTotals();
+    this.foodlist.calculateTotals();
 
     this.columnDefs = ['name', 'amount', 'unit', 'calories', 'fat', 'protein', 'carbs', 'fiber', 'netCarb', 'edit', 'delete'];
-  }
-
-  calculateTotals(){
-    this.totalCalories = this.getTotalCalories();
-    this.totalFat = this.getTotalFat();
-    this.totalProtein = this.getTotalProtein();
-    this.totalCarbs = this.getTotalCarbs();
-    this.totalFiber = this.getTotalFiber();
-  }
-
-  getTotalCalories() {
-    return this.foodlist.reduce((acc, food) => acc + food.calories, 0);
-  }
-  getTotalFat() {
-    return this.foodlist.reduce((acc, food) => acc + food.fat, 0);
-  }
-  getTotalProtein() {
-    return this.foodlist.reduce((acc, food) => acc + food.protein, 0);
-  }
-  getTotalCarbs() {
-    return this.foodlist.reduce((acc, food) => acc + food.carbs, 0);
-  }
-  getTotalFiber() {
-    return this.foodlist.reduce((acc, food) => acc + food.fiber, 0);
   }
 
   openCreateDialog() {
@@ -67,8 +40,7 @@ export class FoodListComponent implements OnInit {
 
   saveFood(food: Food) {
     // Save to DB, if successful push to table
-    this.foodlist.push(food);
-    this.calculateTotals();
+    this.foodlist.addFood(food);
     this.foodTable.renderRows();
   }
 
@@ -83,23 +55,18 @@ export class FoodListComponent implements OnInit {
 
     this.dialogRef.afterClosed().subscribe(result => {
       if (result != null) {
-        this.updateFood(result, this.foodlist.indexOf(event));
+        this.updateFood(result, this.foodlist.foods.indexOf(event));
       }
     });
   }
 
   updateFood(food: Food, index: number) {
-    this.foodlist[index] = food;
-    this.calculateTotals();
+    this.foodlist.updateFood(food, index);
     this.foodTable.renderRows();
   }
 
   deleteFood(event: Food) {
-    const index: number = this.foodlist.indexOf(event);
-    if (index !== -1) {
-      this.foodlist.splice(index, 1);
-      this.calculateTotals();
-      this.foodTable.renderRows();
-    }
+    this.foodlist.deleteFood(event);
+    this.foodTable.renderRows();
   }
 }

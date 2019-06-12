@@ -1,11 +1,11 @@
-import {Food} from './food';
+import {FoodList} from './food-list';
 
 export class Meal {
   name: string;
-  foods: Food[];
+  foodlist: FoodList;
 
-  constructor(name: string, foods: Food[]) {
+  constructor(name: string, foodlist: FoodList) {
     this.name = name;
-    this.foods = foods;
+    this.foodlist = foodlist;
   }
 }
