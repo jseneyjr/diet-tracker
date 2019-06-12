@@ -6,6 +6,7 @@
         "name": "Breakfast",
         "foods": [
           {
+            "group": "Protein",
             "name": "Eggs",
             "unit": "oz",
             "amount": 4,
@@ -16,6 +17,7 @@
             "fiber": 0
           },
           {
+            "group": "Dairy",
             "name": "Milk",
             "unit": "g",
             "amount": 3,
@@ -31,6 +33,7 @@
         "name": "Lunch",
         "foods": [
           {
+            "group": "Protein",
             "name": "Chicken",
             "unit": "oz",
             "amount": 4,
@@ -41,6 +44,7 @@
             "fiber": 0
           },
           {
+            "group": "Cereals",
             "name": "Bread",
             "unit": "g",
             "amount": 3,

@@ -18,6 +18,6 @@ export class FoodPageComponent implements OnInit {
     const data = this.route.snapshot.data;
     const list: Food[] = data.foodlist;
     this.foodlist = new FoodList(list.map(food =>
-      new Food(food.name, food.amount, food.unit, food.calories, food.fat, food.protein, food.carbs, food.fiber)));
+      new Food(food.group, food.name, food.amount, food.unit, food.calories, food.fat, food.protein, food.carbs, food.fiber)));
   }
 }

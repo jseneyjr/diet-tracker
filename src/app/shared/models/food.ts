@@ -1,4 +1,5 @@
 export class Food {
+  group: string;
   name: string;
   amount: number;
   unit: string;
@@ -12,8 +13,9 @@ export class Food {
     return this.carbs - this.fiber;
   }
 
-  constructor(name: string, amount, unit, calories, fat, protein, carbs, fiber) {
+  constructor(group: string, name: string, amount, unit, calories, fat, protein, carbs, fiber) {
 
+    this.group = group;
     this.name = name;
     this.amount = amount;
     this.unit = unit;

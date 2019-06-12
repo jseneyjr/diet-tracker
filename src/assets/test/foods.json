@@ -1,5 +1,6 @@
 [
   {
+    "group": "Protein",
     "name": "Chicken",
     "unit": "oz",
     "amount": 4,
@@ -10,6 +11,7 @@
     "fiber": 0
   },
   {
+    "group": "Cereals",
     "name": "Bread",
     "unit": "g",
     "amount": 3,
