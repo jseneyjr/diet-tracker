@@ -1,1 +1,17 @@
-<app-food-table [foodlist]="foodlist" [showTotals]="true"></app-food-table>
+<div class="page-header">
+  <h1>Saved Foods</h1>
+</div>
+<mat-divider></mat-divider>
+<br>
+
+<div class="d-flex justify-content-between">
+  <div>
+    <mat-slide-toggle color="primary" [checked]="sortByFoodGroups"> Organize by Food Group </mat-slide-toggle>
+  </div>
+  <div>
+    <button mat-raised-button (click)="addFood()"><mat-icon>add</mat-icon>Add New Food</button>
+  </div>
+</div>
+<br>
+
+<app-food-table [foodlist]="foodlist" [showTotals]="false"></app-food-table>
