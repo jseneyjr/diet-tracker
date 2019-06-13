@@ -6,7 +6,9 @@
 
 <div class="d-flex justify-content-between">
   <div>
-    <mat-slide-toggle color="primary" [checked]="sortByFoodGroups"> Organize by Food Group </mat-slide-toggle>
+    <mat-slide-toggle color="primary" [checked]="sortByFoodGroups" (change)="testChange($event)">
+      {{ sortByFoodGroups ? 'All Foods' : 'By Food Group' }}
+    </mat-slide-toggle>
   </div>
   <div>
     <button mat-raised-button (click)="addFood()"><mat-icon>add</mat-icon>Add New Food</button>

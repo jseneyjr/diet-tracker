@@ -13,7 +13,7 @@ import {FoodTableComponent} from '../../../../shared/components/food-table/food-
 export class FoodPageComponent implements OnInit {
   @ViewChild(FoodTableComponent) foodTable: FoodTableComponent;
   foodlist: FoodList;
-  sortByFoodGroups = false;
+  sortByFoodGroups;
 
   constructor(private route: ActivatedRoute) {}
 
@@ -22,9 +22,14 @@ export class FoodPageComponent implements OnInit {
     const list: Food[] = data.foodlist;
     this.foodlist = new FoodList(list.map(food =>
       new Food(food.group, food.name, food.amount, food.unit, food.calories, food.fat, food.protein, food.carbs, food.fiber)));
+    this.sortByFoodGroups = true;
   }
 
   addFood() {
     this.foodTable.openCreateDialog();
+  }
+
+testChange(event) {
+    this.sortByFoodGroups = event.checked;
   }
 }
