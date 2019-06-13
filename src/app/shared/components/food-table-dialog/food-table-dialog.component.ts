@@ -1,17 +1,17 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import { Units } from '../../../../shared/enums/units';
+import {Units} from '../../enums/units';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {Food} from '../../../../shared/models/food';
+import {Food} from '../../models/food';
 import {FormControl, Validators} from '@angular/forms';
-import {MyErrorStateMatcher} from '../../../../shared/error-state-matchers/my-error-state-matcher';
-import {FoodGroups} from '../../../../shared/enums/food-groups';
+import {MyErrorStateMatcher} from '../../error-state-matchers/my-error-state-matcher';
+import {FoodGroups} from '../../enums/food-groups';
 
 @Component({
-  selector: 'app-food-list-dialog',
-  templateUrl: 'food-list-dialog.component.html',
-  styleUrls: ['food-list-dialog.component.css'],
+  selector: 'app-food-table-dialog',
+  templateUrl: 'food-table-dialog.component.html',
+  styleUrls: ['food-table-dialog.component.css'],
 })
-export class FoodListDialogComponent implements OnInit {
+export class FoodTableDialogComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   group = new FormControl('',  [
     Validators.required
@@ -42,7 +42,7 @@ export class FoodListDialogComponent implements OnInit {
   ]);
   unitValues = Units;
 
-  constructor(private dialogRef: MatDialogRef<FoodListDialogComponent>,
+  constructor(private dialogRef: MatDialogRef<FoodTableDialogComponent>,
               @Inject(MAT_DIALOG_DATA) private data) {}
 
   ngOnInit() {

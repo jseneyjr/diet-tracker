@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {SharedModule} from '../../shared/shared.module';
 import {FoodPageComponent} from './components/food-page/food-page.component';
 import {FoodHomeRoutingModule} from './food-home-routing.module';
 import {FoodShareModule} from '../food-share.module';
-import {FoodListModule} from '../list/food-list.module';
 
 @NgModule({
   declarations: [
@@ -11,9 +11,9 @@ import {FoodListModule} from '../list/food-list.module';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     FoodHomeRoutingModule,
-    FoodShareModule,
-    FoodListModule
+    FoodShareModule
   ],
   providers: [ ],
   entryComponents: [ ]

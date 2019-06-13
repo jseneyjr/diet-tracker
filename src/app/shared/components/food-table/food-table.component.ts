@@ -1,21 +1,21 @@
 import {Component, OnInit, ViewChild, Input} from '@angular/core';
 import {MatDialog, MatDialogRef, MatTable} from '@angular/material';
-import {FoodList} from '../../../../shared/models/food-list';
-import {Food} from '../../../../shared/models/food';
-import { FoodListDialogComponent } from '../food-list-dialog/food-list-dialog.component';
+import {FoodList} from '../../models/food-list';
+import {Food} from '../../models/food';
+import { FoodTableDialogComponent } from '../food-table-dialog/food-table-dialog.component';
 
 
 @Component({
-  selector: 'app-food-list',
-  templateUrl: 'food-list.component.html',
-  styleUrls: ['food-list.component.css'],
+  selector: 'app-food-table',
+  templateUrl: 'food-table.component.html',
+  styleUrls: ['food-table.component.css'],
 })
-export class FoodListComponent implements OnInit {
+export class FoodTableComponent implements OnInit {
   @ViewChild('foodTable') foodTable: MatTable<Food>;
   @Input() showTotals: boolean;
   @Input() foodlist: FoodList;
   columnDefs: string[];
-  dialogRef: MatDialogRef<FoodListDialogComponent>;
+  dialogRef: MatDialogRef<FoodTableDialogComponent>;
 
 
   constructor(public dialog: MatDialog) {}
@@ -27,7 +27,7 @@ export class FoodListComponent implements OnInit {
   }
 
   openCreateDialog() {
-    this.dialogRef = this.dialog.open(FoodListDialogComponent, {
+    this.dialogRef = this.dialog.open(FoodTableDialogComponent, {
       width: '500px'
     });
 
@@ -46,7 +46,7 @@ export class FoodListComponent implements OnInit {
 
   // Open dialog for updating row
   openUpdateDialog(event: Food) {
-    this.dialogRef = this.dialog.open(FoodListDialogComponent, {
+    this.dialogRef = this.dialog.open(FoodTableDialogComponent, {
       width: '500px',
       data: {
         food: event
