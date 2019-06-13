@@ -1,6 +1,15 @@
 <form (ngSubmit)="!hasErrors() && onSubmit()">
   <div mat-dialog-content>
     <mat-form-field>
+      <mat-select placeholder="Food Group" [formControl]="group" [errorStateMatcher]="matcher" required>
+        <mat-option *ngFor="let group of getGroups()" [value]="group">
+          {{group}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="unit.hasError('required')">This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
       <input matInput placeholder="Name" [formControl]="name" [errorStateMatcher]="matcher" required>
       <mat-error *ngIf="name.hasError('required')">
         This field is required

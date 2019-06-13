@@ -4,6 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {Food} from '../../../../shared/models/food';
 import {FormControl, Validators} from '@angular/forms';
 import {MyErrorStateMatcher} from '../../../../shared/error-state-matchers/my-error-state-matcher';
+import {FoodGroups} from '../../../../shared/enums/food-groups';
 
 @Component({
   selector: 'app-food-list-dialog',
@@ -12,6 +13,9 @@ import {MyErrorStateMatcher} from '../../../../shared/error-state-matchers/my-er
 })
 export class FoodListDialogComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
+  group = new FormControl('',  [
+    Validators.required
+  ]);
   name = new FormControl('',  [
     Validators.required
   ]);
@@ -43,6 +47,7 @@ export class FoodListDialogComponent implements OnInit {
 
   ngOnInit() {
     if (this.data != null) {
+      this.group.setValue(this.data.food.group);
       this.name.setValue(this.data.food.name);
       this.amount.setValue(this.data.food.amount);
       this.unit.setValue(this.data.food.unit);
@@ -54,6 +59,14 @@ export class FoodListDialogComponent implements OnInit {
     }
   }
 
+  getGroups() {
+    const groups = FoodGroups;
+    const keys = Object.keys(groups).filter(
+      (type) => isNaN(type as any) && type !== 'values'
+    );
+    return keys;
+  }
+
   getUnits() {
     const units = Units;
     const keys = Object.keys(units).filter(
@@ -63,8 +76,8 @@ export class FoodListDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    const food = new Food(this.name.value, +this.amount.value, this.unit.value, +this.calories.value,
-      +this.fat.value, +this.protein.value, +this.carbs.value, +this.fiber.value);
+    const food = new Food(this.group.value, this.name.value, +this.amount.value, this.unit.value,
+      +this.calories.value, +this.fat.value, +this.protein.value, +this.carbs.value, +this.fiber.value);
     this.dialogRef.close(food);
   }
 
@@ -73,7 +86,7 @@ export class FoodListDialogComponent implements OnInit {
   }
 
   hasErrors() {
-    return this.name.invalid || this.unit.invalid || this.amount.invalid || this.calories.invalid ||
-      this.fat.invalid || this.protein.invalid || this.carbs.invalid || this.fiber.invalid;
+    return this.group.invalid || this.name.invalid || this.unit.invalid || this.amount.invalid ||
+      this.calories.invalid || this.fat.invalid || this.protein.invalid || this.carbs.invalid || this.fiber.invalid;
   }
 }
