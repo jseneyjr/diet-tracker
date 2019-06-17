@@ -6,7 +6,7 @@
 
 <div class="d-flex justify-content-between">
   <div>
-    <mat-slide-toggle color="primary" [checked]="sortByFoodGroups" (change)="testChange($event)">
+    <mat-slide-toggle color="primary" [checked]="sortByFoodGroups" (change)="toggleChange($event)">
       {{ sortByFoodGroups ? 'All Foods' : 'By Food Group' }}
     </mat-slide-toggle>
   </div>
@@ -16,4 +16,11 @@
 </div>
 <br>
 
-<app-food-table [foodlist]="foodlist" [showTotals]="false"></app-food-table>
+<div *ngIf="!sortByFoodGroups">
+  <app-food-table [foodlist]="foodlist" [showTotals]="false"></app-food-table>
+</div>
+
+
+<div *ngIf="sortByFoodGroups">
+  <app-food-group-list [foodlist]="foodlist"></app-food-group-list>
+</div>

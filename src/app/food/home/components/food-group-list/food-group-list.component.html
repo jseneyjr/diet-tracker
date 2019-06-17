@@ -1,0 +1,17 @@
+<div *ngFor="let group of foodGroups | keyvalue">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{group.key}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{group.value.foods.length }} {{group.value.foods.length > 1 ? 'Foods' : 'Food'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <app-food-table [foodlist]="group.value" [showTotals]="false"></app-food-table>
+    <br>
+  </mat-expansion-panel>
+  <br>
+  <br>
+</div>

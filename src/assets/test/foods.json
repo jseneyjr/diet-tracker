@@ -20,5 +20,38 @@
     "protein": 2,
     "carbs": 5,
     "fiber": 1
+  },
+  {
+    "group": "Protein",
+    "name": "Chicken",
+    "unit": "oz",
+    "amount": 4,
+    "calories": 100,
+    "fat": 0,
+    "protein": 20,
+    "carbs": 2,
+    "fiber": 0
+  },
+  {
+    "group": "Cereals",
+    "name": "Bread",
+    "unit": "g",
+    "amount": 3,
+    "calories": 200,
+    "fat": 1,
+    "protein": 2,
+    "carbs": 5,
+    "fiber": 1
+  },
+  {
+    "group": "Fruits",
+    "name": "Apple",
+    "unit": "g",
+    "amount": 3,
+    "calories": 200,
+    "fat": 1,
+    "protein": 2,
+    "carbs": 5,
+    "fiber": 1
   }
 ]

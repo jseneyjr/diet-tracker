@@ -22,14 +22,14 @@ export class FoodPageComponent implements OnInit {
     const list: Food[] = data.foodlist;
     this.foodlist = new FoodList(list.map(food =>
       new Food(food.group, food.name, food.amount, food.unit, food.calories, food.fat, food.protein, food.carbs, food.fiber)));
-    this.sortByFoodGroups = true;
+    this.sortByFoodGroups = false;
   }
 
   addFood() {
     this.foodTable.openCreateDialog();
   }
 
-testChange(event) {
+  toggleChange(event) {
     this.sortByFoodGroups = event.checked;
   }
 }
